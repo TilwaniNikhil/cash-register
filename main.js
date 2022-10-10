@@ -9,7 +9,10 @@ const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
   hideMessage();
   if (billAmount.value > 0) {
-
+    if (Number(cashGiven.value) == Number(billAmount.value)) {
+      showMessage("The Amount given and bill amount is same , No change to be Returned ");
+    }
+    else{
     if (Number(cashGiven.value) >= Number(billAmount.value)) {
  
       const amountToBeReturned = cashGiven.value - billAmount.value; 
@@ -17,6 +20,7 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
     } else {
       showMessage("The Amount is lesser then bill!");
     }
+  }
   } else {
     showMessage("Invalid Bill Amount");
   }
